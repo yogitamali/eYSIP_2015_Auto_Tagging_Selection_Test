@@ -7,3 +7,4 @@ Book References:
 1. Pattern Recognition, Fourth Edition [Sergios Theodoridis, Konstantinos Koutroumbas]
 2. Pattern Recognition and Machine Learning [Christopher Bishop]
 3. Artificial Intelligence: A Modern Approach (3rd Edition) [Stuart Russell, Peter Norvig]
+4. Data Mining Concepts and Techniques (3rd Edition) [Jiawei Han, Micheline Kamber, Jian Pei]
