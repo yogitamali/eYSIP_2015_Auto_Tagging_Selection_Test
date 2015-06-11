@@ -80,11 +80,14 @@ class TrainingSetup:
         """
         return self.questionLabels[i - 1]
 
-    def writeLabels(self, fname):
+    def writeLabels(self):
         """
             writeLabels(TrainingSetup, file) -> None
         """
+        f = open('key.txt', 'w')
+        
         for i in self.questionLabels:
-            fname.write(str(i))
-            fname.write(' ')
-        fname.write('\n')
+            f.write(str(i))
+            f.write('\n')
+        
+        f.close()

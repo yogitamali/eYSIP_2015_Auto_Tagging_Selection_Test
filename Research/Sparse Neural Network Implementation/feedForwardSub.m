@@ -1,5 +1,5 @@
 
-function output = feedForwardSub(weights1, weights2, inputData)
+function [output, hidden_units] = feedForwardSub(weights1, weights2, inputData)
 
 	%-------------------------------------------------------------------%
 	% Calculates the output of a sub Network in Sparse Neural Network	%
@@ -12,6 +12,7 @@ function output = feedForwardSub(weights1, weights2, inputData)
 	% weights1 = Weights for the first edge layer, [p x (n + 1)] matrix
 	% weights2 = Weights for the second edge layer, [1 x (p + 1)] matrix
 	% output = m x 1 output matrix, for a particular question
+	% hidden_units = m x p hidden units matrix
 	
 	% Here n must include the bias term as well
 	m = size(inputData, 1);
@@ -19,7 +20,8 @@ function output = feedForwardSub(weights1, weights2, inputData)
 	
 	% Calculate the Hidden units (m x p), p units for each of the m examples
 	% Calculate sigmoid activations of hidden units
-	hiddenUnits = sigmoid(inputData * weights1');
+	hidden_units = inputData * weights1';
+	hiddenUnits = sigmoid(hidden_units);
 	
 	% Add bias to hidden units
 	hiddenUnits = [ones(m, 1) hiddenUnits];

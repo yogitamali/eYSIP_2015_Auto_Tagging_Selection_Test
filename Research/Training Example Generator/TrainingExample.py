@@ -50,6 +50,7 @@ def generateTrainingData(numQuestions, numExamples):
     trainingSetup = TrainingSetup(numQuestions)
     trainingExample = TrainingExample(trainingSetup)
 
+	# Write training data
     f = open('examples.txt', 'w')
 
     # Write as an octave matrix
@@ -57,12 +58,29 @@ def generateTrainingData(numQuestions, numExamples):
     f.write('# type: matrix\n')
     f.write('# rows: ' + str(numExamples) + '\n')
     f.write('# columns: ' + str(numQuestions) + '\n');
-    # trainingSetup.writeLabels(f)
-
+    
     for  i in range(numExamples):
         trainingExample.writeExample(f)
 
-    f.close()
+    f.close() 
+       
+    # Write the key for data set
+    trainingSetup.writeLabels()
+    
+    # Write test data
+    f = open('test.txt', 'w')
+    f.write('# name: testd\n')
+    f.write('# type: matrix\n')
+    f.write('# rows: ' + str((int)(numExamples * 0.1) + 1) + '\n')
+    f.write('# columns: ' + str(numQuestions) + '\n');
+    
+    numTests = (int)(numExamples * 0.1) + 1
+    for  i in range(numTests):
+        trainingExample.writeExample(f)
+        
+    f.close();
+    
+
     
     
 if (__name__ == '__main__'):

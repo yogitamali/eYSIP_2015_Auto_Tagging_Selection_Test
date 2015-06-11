@@ -3,9 +3,12 @@ Usage: python TrainingExample.py
 
 Output:
 1. A file called 'examples.py' which can be read directly in octave as the training matrix X.
-2. In octave use: load('examples.py')
+2. In octave use: load('examples.txt')
 3. Matrix X is (m x n) matrix where m is the number of training examples, and n is the number of questions.
 4. Each training examples corresponds to the data about one student.
+5. A file 'key.txt' which contains the correct labels for questions.
+6. A file 'test.txt' which can be read directly in octave as test matrix testd.
+7. In octave use: load('test.txt')
 
 Purpose:
 1. Generates Training Examples based on certain parameters
