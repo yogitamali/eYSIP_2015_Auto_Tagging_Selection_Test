@@ -1,0 +1,141 @@
+use eyrc14_auto_data_analysis;
+create table QuestionCounts (question_id INT(11), Total INT(4));
+create table CorrectQuestionCounts (question_id INT(11), Total INT(4));
+create table IncorrectQuestionCounts (question_id INT(11), Total INT(4));
+Insert into QuestionCounts select question_id, count(*) from test_ques_ans_dtls group by question_id;
+Insert into CorrectQuestionCounts select question_id, count(*) from test_ques_ans_dtls where marks = 3 group by question_id;
+Insert into CorrectQuestionCounts select distinct question_id, 0 from test_ques_ans_dtls where question_id not in (select question_id from CorrectQuestionCounts);
+Insert into IncorrectQuestionCounts select question_id, count(*) from test_ques_ans_dtls where marks = -1 group by question_id;
+Insert into IncorrectQuestionCounts select distinct question_id, 0 from test_ques_ans_dtls where question_id not in (select question_id from IncorrectQuestionCounts);
+Insert into Features select question_id, (CorrectQuestionCounts.Total + IncorrectQuestionCounts.Total)/QuestionCounts.Total, CorrectQuestionCounts.Total/QuestionCounts.Total from QuestionCounts join CorrectQuestionCounts using(question_id) join IncorrectQuestionCounts using (question_id);
+drop table QuestionCounts;
+drop table CorrectQuestionCounts;
+drop table IncorrectQuestionCounts;
+
+
+
+
+SELECT * FROM `Features` WHERE question_id in (SELECT id FROM question_master WHERE difficulty_level = 0);
+SELECT * FROM `Features` WHERE question_id in (SELECT id FROM question_master WHERE difficulty_level = 1);
+SELECT * FROM `Features` WHERE question_id in (SELECT id FROM question_master WHERE difficulty_level = 2);
+
+create table Features (question_id INT(11), feature1 FLOAT(7, 6), feature2 FLOAT(7, 6));
+
+
+
+
+
+use eyrc14_auto_data_analysis;
+create table AvgSolved(question_id INT(11), feature3 FLOAT(7, 5));
+Insert into AvgSolved select question_id, avg(counts)
+from (select D1.question_id, D1.test_id, count(*) as counts
+from test_ques_ans_dtls D1 join test_ques_ans_dtls D2 on (D1.test_id = D2.test_id)
+where D2.marks = 3 and D1.marks = 3
+group by D1.question_id, D1.test_id) as Table1
+group by question_id;
+
+create table AvgNotSolved (question_id INT(11), feature4 FLOAT(7, 5));
+Insert into AvgNotSolved select question_id, avg(counts)
+from (select D1.question_id, D1.test_id, count(*) as counts
+from test_ques_ans_dtls D1 join test_ques_ans_dtls D2 on (D1.test_id = D2.test_id)
+where D2.marks = 3 and D1.marks = -1
+group by D1.question_id, D1.test_id) as Table1
+group by question_id;
+
+create table AvgAttemptedNotSolved (question_id INT(11), feature5 FLOAT(7, 5));
+Insert into AvgAttemptedNotSolved select question_id, avg(counts)
+from (select D1.question_id, D1.test_id, count(*) as counts
+from test_ques_ans_dtls D1 join test_ques_ans_dtls D2 on (D1.test_id = D2.test_id)
+where (D2.marks = 3 or D2.marks = -1) and D1.marks = -1
+group by D1.question_id, D1.test_id) as Table1
+group by question_id;
+
+create table AvgAttemptedSolved (question_id INT(11), feature6 FLOAT(7, 5));
+Insert into AvgAttemptedSolved select question_id, avg(counts)
+from (select D1.question_id, D1.test_id, count(*) as counts
+from test_ques_ans_dtls D1 join test_ques_ans_dtls D2 on (D1.test_id = D2.test_id)
+where (D2.marks = 3 or D2.marks = -1) and D1.marks = 3
+group by D1.question_id, D1.test_id) as Table1
+group by question_id;
+
+create table AvgAttemptedNotAttempted (question_id INT(11), feature7 FLOAT(7, 5));
+Insert into AvgAttemptedNotAttempted select question_id, avg(counts)
+from (select D1.question_id, D1.test_id, count(*) as counts
+from test_ques_ans_dtls D1 join test_ques_ans_dtls D2 on (D1.test_id = D2.test_id)
+where (D2.marks = 3 or D2.marks = -1) and D1.marks = 0
+group by D1.question_id, D1.test_id) as Table1
+group by question_id;
+
+create table AvgAttemptedAttempted (question_id INT(11), feature8 FLOAT(7, 5));
+Insert into AvgAttemptedAttempted select question_id, avg(counts)
+from (select D1.question_id, D1.test_id, count(*) as counts
+from test_ques_ans_dtls D1 join test_ques_ans_dtls D2 on (D1.test_id = D2.test_id)
+where (D2.marks = 3 or D2.marks = -1) and (D1.marks = -1 or D1.marks = 3)
+group by D1.question_id, D1.test_id) as Table1
+group by question_id;
+
+
+
+create table AllFeatures
+(
+    question_id INT(11) PRIMARY KEY,
+    feature1 FLOAT(7, 5),
+    feature2 FLOAT(7, 5),
+    feature3 FLOAT(7, 5),
+    feature4 FLOAT(7, 5),
+    feature5 FLOAT(7, 5),
+    feature6 FLOAT(7, 5),
+    feature7 FLOAT(7, 5),
+    feature8 FLOAT(7, 5),
+    feature9 FLOAT(7, 5),
+    feature10 FLOAT(7, 5),
+    feature11 FLOAT(7, 5),
+    difficulty_level INT(1)
+);
+
+Insert into AllFeatures (question_id, feature1, feature2, feature3, feature4, feature5, feature6, feature7, feature8, difficulty_level)
+(
+select question_id, feature1, feature2, feature3, feature4, feature5, feature6, feature7, feature8, difficulty_level
+from (Features natural join AvgSolved
+	natural join AvgNotSolved
+    natural join AvgAttemptedSolved
+    natural join AvgAttemptedNotSolved
+    natural join AvgAttemptedNotAttempted
+    natural join AvgAttemptedAttempted
+    natural join (select id as question_id, difficulty_level from question_master) as T1)
+order by question_id
+);
+    
+
+
+select question_id, feature1, feature2, feature3, feature4, feature5, feature6, feature7, feature8, difficulty_level
+from AllFeatures
+order by question_id;
+
+
+
+select test_id, (1 - numIncorrect/(numCorrect + numIncorrect)) as C from 
+(
+select distinct test_id, count(*) as numIncorrect
+from test_ques_ans_dtls
+where marks = -1
+group by test_id
+order by test_id) as T1 natural join
+(
+select distinct test_id, count(*) as numCorrect
+from test_ques_ans_dtls
+where marks = 3
+group by test_id
+order by test_id) as T2;
+
+
+select question_id, numWrong / (numWrong + numRight) as G from
+(select question_id, count(*) as numWrong
+from test_ques_ans_dtls
+where marks = -1
+group by question_id) as T1 natural join
+(select question_id, count(*) as numRight
+from test_ques_ans_dtls
+where marks = 3
+group by question_id) as T2
+order by question_id;
