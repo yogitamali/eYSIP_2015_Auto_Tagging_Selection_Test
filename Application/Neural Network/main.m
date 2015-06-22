@@ -14,7 +14,7 @@ fprintf("Data Read.\n");
 % Segregate the data
 question_id = inputData(:, 1);	% First column is question id
 X = inputData(:, 2:8);	% Next 7 columns contain features
-y = inputData(:, 9);	% Last column contains current question tag
+y = inputData(:, 9);	% Last column contains current question tags
 
 % Some useful variables
 m = size(X, 1);	% Number of training examples
@@ -24,7 +24,7 @@ fprintf("\n\nPerforming Mean Normalization...\n");
 meanX = mean(X);	% Mean of all the features
 stdX = std(X);	% Standard deviation of all the features
 X = (X - meanX) ./ stdX;
-X = X(:, [2, 7]);	% Uncomment this line to use selected features
+% X = X(:, [1,2,7]);	% Use only 1, 2 and 7 feature. Uncomment this line to use selected features
 fprintf("Mean Normalization Done.\n");
 
 % Use PCA to obtain XReduced for Plotting Purposes
@@ -38,24 +38,16 @@ plotData(XReduce, y .+ 1, m);
 fprintf("Visualization done. Press any key to continue.\n");
 pause;
 
-% Perform Clustering on Data
-fprintf("\n\nRunning k-Means clustering...\n");
-fflush(stdout);
-[centroids, labels] = cluster(X, 50, 3);
-fprintf("Clustering Completed.\n");
 
-% Assign Semantics
-fprintf("\n\nAssigning Semantics...\n");
-[labels, map] = assignSemanticsNew(centroids, labels);	% Change this to assignSemantics if using all features
-fprintf("Semantics Assigned.\n");
-
-% Show Manual Tagging Accuracy
-accuracy = (sum((y == labels)(:)) * 100) / m;
-fprintf("\n\nManual Tagging Accuracy = %f percent\n", accuracy);
+% Train the Neural Network
+labels = trainNN(X, y .+ 1);
+	
+% Show Accuracy of Manual Tagging Process
+fprintf("\n\nManual Tagging Accuracy = %f\n", (sum(y == (labels .- 1)) * 100) / m);
 
 % Visualize Final Data
 fprintf("\n\nVisualizing final data...\n");
-plotData(XReduce, labels .+ 1, m);
+plotData(XReduce, labels, m);
 fprintf("Visualization done. Press any key to continue.\n\n\n");
 pause;
 

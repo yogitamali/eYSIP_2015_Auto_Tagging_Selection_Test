@@ -7,7 +7,7 @@ Implementation of k-Means Clustering algorithm.
 4. k-Means Clustering has been used.
 5. Output has been shown as graphs.
 6. Closer analysis of final centroids reveals that all except the last feature are behaving as they were supposed to behave
-7. The implementation here simply segregates the examples into clusters. The semantics of these clusters are yet to be determined.
+7. The implementation here simply segregates the examples into clusters. The semantics of these clusters are yet to be determined. [Update: Semantics have been determined]
 8. Only 1489 out of 1500 questions can be used since all 7 features were not available for the remaining 11 questions.
 
 
@@ -15,4 +15,3 @@ Improvements Suggested:
 
 1. Improving the Time complexity.
 2. Including the remaining 11 questions.
-3. Deciding Semantics based on a ranking scheme.

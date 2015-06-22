@@ -53,9 +53,6 @@ function [centroids, labels] = cluster(X, max_iters, K)
 		end;
 		
 	end;
-	
-	% Original Labels start at 0
-	labels = labels .- 1;
 
 end;
 
