@@ -2,6 +2,8 @@ Web References:
 1. Octave [http://www.gnu.org/software/octave/]
 2. Machine Learning Course [https://www.coursera.org/course/ml]
 3. LaTeX Tutorial [http://www.latex-tutorial.com/]
+4. Feature Engineering [http://machinelearningmastery.com/discover-feature-engineering-how-to-engineer-features-and-how-to-get-good-at-it/]
+5. k-Means Assumptions [http://www.kdnuggets.com/2015/01/data-science-102-kmeans-clustering-not-free-lunch.html]
 
 Book References:
 1. Pattern Recognition, Fourth Edition [Sergios Theodoridis, Konstantinos Koutroumbas]
