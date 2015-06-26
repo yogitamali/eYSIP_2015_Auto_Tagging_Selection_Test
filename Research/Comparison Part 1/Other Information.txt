@@ -1,0 +1,29 @@
+
+Difficulty Labels:
+0 -> Easy
+1 -> Medium
+2 -> Hard
+
+Trainining Data Used: features.csv
+Using only feature 2 and feature 7
+
+
+K-Means Algorithm:
+Number of Iterations: 20
+Data saved as: 'kmeans_labels' in 'KMeansLabels'
+
+
+EM Algorithm:
+Number of Iterations: 50
+Gaussian Distribution Assumed
+Hard Clustering obtained from Soft Clustering by taking max over all w values for a training example
+Data saved as: 'em_labels' in 'EMLabels'
+
+
+Competitive Learning:
+Number of Iterations: 50
+Number of Features used from Autoencoder: 6
+Tags were assigned semantics manually in accordance with the labels.
+Data saved as: 'competitive_labels' in 'CompetitiveLabels'
+
+
