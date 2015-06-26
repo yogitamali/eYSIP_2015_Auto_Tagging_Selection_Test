@@ -1,5 +1,5 @@
 
-% Main program that performs clustering on data using EM Algorithm  based on features.csv
+% Main program that performs clustering on data using EM Algorithm based on features.csv
 % file obtained after feature extraction
 
 close all;
@@ -45,18 +45,14 @@ fflush(stdout);
 [labels, w] = em(X, y, 3, 50);
 fprintf("EM Completed.\n");
 
-% Assign Semantics
-% fprintf("\n\nAssigning Semantics...\n");
-% [labels, map] = assignSemanticsNew(centroids, labels);	% Change this to assignSemantics if using all features
-% fprintf("Semantics Assigned.\n");
-
 % Show Manual Tagging Accuracy
 accuracy = (sum((y == labels .- 1)(:)) * 100) / m;
 fprintf("\n\nManual Tagging Accuracy = %f percent\n", accuracy);
 
 % Visualize Final Data
 fprintf("\n\nVisualizing final data...\n");
-plotData(XReduce, labels, m);
+% plotData(XReduce, labels, m);
+plotScatter(XReduce, w, m);
 fprintf("Visualization done. Press any key to continue.\n\n\n");
 pause;
 

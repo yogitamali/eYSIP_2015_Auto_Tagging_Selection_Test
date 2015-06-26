@@ -25,10 +25,21 @@ function plotData(X, y, m)
 		categories{y(i)} = [categories{y(i)}; X(i, :)];
 	end;
 	
+	% For test purpose when number of features = 1
+	if (size(X, 2) == 1),
+		figure;
+		hold on;
+		for i = [1:labels],
+			plot(sort(categories{i}), options{i});
+		end;
+		hold off;
+		return;
+	end;
+	
 	% Plot the data
+	
 	figure;
 	hold on;
-	
 	for i = [1:labels],
 		plot(categories{i}(:, 1), categories{i}(:, 2), options{i});
 	end;

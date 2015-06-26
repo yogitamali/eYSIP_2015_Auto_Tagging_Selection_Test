@@ -15,7 +15,7 @@ function [phi, u, sigma] = maximization(X, w, k),
 	% Calculate the means [1 x n] mean for each of k clusters
 	u = {};
 	for i = [1:k],
-		u{i} = sum(X .* w(:, i)) / sum(w(:, i));
+		u{i} = sum(X .* w(:, i)) ./ sum(w(:, i));
 	end;
 	
 	% Calculate covariance [n, n] covariance matrix for each of k clusters
