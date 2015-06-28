@@ -10,20 +10,23 @@ Using only feature 2 and feature 7
 
 K-Means Algorithm:
 Number of Iterations: 20
-Data saved as: 'kmeans_labels' in 'KMeansLabels'
+Data saved as: 'kmeans_labels' in 'KMeansLabels' for 2 Features
+Data saved as: 'kmeans_labels' in 'KMeansLabels8' for all Features
 
 
 EM Algorithm:
 Number of Iterations: 50
 Gaussian Distribution Assumed
 Hard Clustering obtained from Soft Clustering by taking max over all w values for a training example
-Data saved as: 'em_labels' in 'EMLabels'
+Data saved as: 'em_labels' in 'EMLabels' for 2 Features
+Data saved as: 'em_labels' in 'EMLabels8' for all Features
 
 
 Competitive Learning:
 Number of Iterations: 50
 Number of Features used from Autoencoder: 6
 Tags were assigned semantics manually in accordance with the labels.
-Data saved as: 'competitive_labels' in 'CompetitiveLabels'
+Data saved as: 'competitive_labels' in 'CompetitiveLabels' for 2 Features
+Data saved as: 'competitive_labels' in 'CompetitiveLabels8' for all Features
 
 

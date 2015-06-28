@@ -1,0 +1,197 @@
+
+
+
+Reading data...
+Data Read.
+
+
+Performing Mean Normalization...
+warning: operator -: automatic broadcasting operation applied
+warning: quotient: automatic broadcasting operation applied
+Mean Normalization Done.
+
+
+Visualizing initial data...
+Visualization done. Press any key to continue.
+
+
+Loading K-Means Clustering Labels...
+K-Means Labels Loaded.
+
+
+Visualizing K-Means Labels...
+Visualization done.
+
+
+Calculating Agreement of K-Means Labels with Original Labels...
+Agreement with Original Labels: 44.929483 percent
+
+
+Calculating Statistics for K-Means...
+Percentage of Easy Questions: 27.871054 percent
+Percentage of Medium Questions: 41.437206 percent
+Percentage of Hard Questions: 30.691739 percent
+
+
+K-Means Analyzed. Press any key to continue.
+
+
+Loading Competitive Learning Labels...
+Competitive Learning Labels Loaded.
+
+
+Visualizing Competitive Learning Labels...
+Visualization done.
+
+
+Calculating Agreement of Comeptitive Learning Labels with Original Labels...
+Agreement with Original Labels: 43.049026 percent
+
+
+Calculating Statistics for Competitive Learning...
+Percentage of Easy Questions: 33.915379 percent
+Percentage of Medium Questions: 32.370719 percent
+Percentage of Hard Questions: 33.713902 percent
+
+
+Competitive Learning Analyzed. Press any key to continue.
+
+
+Loading EM Labels...
+EM Labels Loaded.
+
+
+Visualizing EM Labels...
+Visualization done.
+
+
+Calculating Agreement of EM Labels with Original Labels...
+Agreement with Original Labels: 45.399597 percent
+
+
+Calculating Statistics for EM...
+Percentage of Easy Questions: 23.102754 percent
+Percentage of Medium Questions: 52.652787 percent
+Percentage of Hard Questions: 24.244459 percent
+
+
+EM Analyzed. Press any key to continue.
+
+
+Comparing K-Means with Competitive Learning.
+
+
+Calculating Agreement between Output of both Algorithms...
+Agreement: 86.903962 percent
+
+
+Visualizing Labels that were given Same Labels...
+Visualization done.
+
+
+Calculating Agreement of both Algorithms with Original Labels...
+Agreement with Original Labels: 38.952317 percent
+
+
+Calculating Statistics for Both Algorithms...
+Percentage of Easy Questions: 27.871054 percent
+Percentage of Medium Questions: 30.355944 percent
+Percentage of Hard Questions: 28.676964 percent
+
+
+Comparison Done. Press any key to continue.
+
+
+Comparing K-Means with EM.
+
+
+Calculating Agreement between Output of both Algorithms...
+Agreement: 78.240430 percent
+
+
+Visualizing Labels that were given Same Labels...
+Visualization done.
+
+
+Calculating Agreement of both Algorithms with Original Labels...
+Agreement with Original Labels: 36.467428 percent
+
+
+Calculating Statistics for Both Algorithms...
+Percentage of Easy Questions: 20.617864 percent
+Percentage of Medium Questions: 37.810611 percent
+Percentage of Hard Questions: 19.811954 percent
+
+
+Comparison Done. Press any key to continue.
+
+
+Comparing EM with Competitive Learning.
+
+
+Calculating Agreement between Output of both Algorithms...
+Agreement: 76.427132 percent
+
+
+Visualizing Labels that were given Same Labels...
+Visualization done.
+
+
+Calculating Agreement of both Algorithms with Original Labels...
+Agreement with Original Labels: 35.191404 percent
+
+
+Calculating Statistics for Both Algorithms...
+Percentage of Easy Questions: 23.102754 percent
+Percentage of Medium Questions: 32.370719 percent
+Percentage of Hard Questions: 20.953660 percent
+
+
+Comparison Done. Press any key to continue.
+
+
+Comparing All Three Algorithms.
+
+
+Calculating Agreement between Output of all Algorithms...
+Agreement: 70.785762 percent
+
+
+Visualizing Labels that were given Same Labels...
+Visualization done.
+
+
+Calculating Agreement of both Algorithms with Original Labels...
+Agreement with Original Labels: 32.975151 percent
+
+
+Calculating Statistics for All Algorithms...
+Percentage of Easy Questions: 20.617864 percent
+Percentage of Medium Questions: 30.355944 percent
+Percentage of Hard Questions: 19.811954 percent
+
+
+Comparison Done. Press any key to continue.
+
+
+Computing Labels based on Majority of Outputs...
+
+
+Visualizing Labels as Detected by Majority...
+Visualization done.
+
+
+Calculating Agreement of Mode with Original Labels...
+Agreement with Original Labels: 44.660846 percent
+
+
+Calculating Statistics for All Algorithms...
+Percentage of Easy Questions: 30.355944 percent
+Percentage of Medium Questions: 39.825386 percent
+Percentage of Hard Questions: 29.818670 percent
+
+
+Everything Done. Press any key to continue.
+
+
+

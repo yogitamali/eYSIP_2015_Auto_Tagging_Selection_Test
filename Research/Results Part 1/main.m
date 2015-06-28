@@ -98,6 +98,7 @@ fprintf("Q3:\t%f\t%f\n", stats(4, 1), stats(4, 2));
 fprintf("Max:\t%f\t%f\n", stats(5, 1), stats(5, 2));
 fprintf("Mean:\t%f\t%f\n", stats(6, 1), stats(6, 2));
 fprintf("SD:\t%f\t%f\n", stats(7, 1), stats(7, 2));
+mean_easy = stats(6, :);	% Will be used later
 
 fprintf("\nCalculating Statistics for Medium Questions...\n");
 stats = statistics(medium);
@@ -108,6 +109,7 @@ fprintf("Q3:\t%f\t%f\n", stats(4, 1), stats(4, 2));
 fprintf("Max:\t%f\t%f\n", stats(5, 1), stats(5, 2));
 fprintf("Mean:\t%f\t%f\n", stats(6, 1), stats(6, 2));
 fprintf("SD:\t%f\t%f\n", stats(7, 1), stats(7, 2));
+mean_medium = stats(6, :);	% Will be used later
 
 fprintf("\nCalculating Statistics for Hard Questions...\n");
 stats = statistics(hard);
@@ -118,6 +120,7 @@ fprintf("Q3:\t%f\t%f\n", stats(4, 1), stats(4, 2));
 fprintf("Max:\t%f\t%f\n", stats(5, 1), stats(5, 2));
 fprintf("Mean:\t%f\t%f\n", stats(6, 1), stats(6, 2));
 fprintf("SD:\t%f\t%f\n", stats(7, 1), stats(7, 2));
+mean_hard = stats(6, :);	% Will be used later
 
 
 % Examples: Manual - 0 and Suggested 1
@@ -131,9 +134,14 @@ for i = [1:m],
 	end;
 end;
 idx = randperm(size(examples, 1))(1:3);	% Randomly select 3 examples
-fprintf("\nQ_Id\tFeature 2\tFeature 7\n");
+fprintf("\nQ_Id\tFeature 2\tFeature 7\td(easy)\t\td(medium)\n");
 for i = [1:3],
-	fprintf("%d\t%f\t%f\n", question_id(examples(idx(i))), X(examples(idx(i)), 1), X(examples(idx(i)), 2));
+	q_id = question_id(examples(idx(i)));
+	f2 = X(examples(idx(i)), 1);
+	f7 = X(examples(idx(i)), 2);
+	d_easy = sum(([f2 f7] - mean_easy).^2(:));
+	d_medium = sum(([f2 f7] - mean_medium).^2(:));
+	fprintf("%d\t%f\t%f\t%f\t%f\n", q_id, f2, f7, d_easy, d_medium);
 end;
 
 % Examples: Manual - 0 and Suggested 2
@@ -147,9 +155,14 @@ for i = [1:m],
 	end;
 end;
 idx = randperm(size(examples, 1))(1:3);	% Randomly select 3 examples
-fprintf("\nQ_Id\tFeature 2\tFeature 7\n");
+fprintf("\nQ_Id\tFeature 2\tFeature 7\td(easy)\t\td(hard)\n");
 for i = [1:3],
-	fprintf("%d\t%f\t%f\n", question_id(examples(idx(i))), X(examples(idx(i)), 1), X(examples(idx(i)), 2));
+	q_id = question_id(examples(idx(i)));
+	f2 = X(examples(idx(i)), 1);
+	f7 = X(examples(idx(i)), 2);
+	d_easy = sum(([f2 f7] - mean_easy).^2(:));
+	d_hard = sum(([f2 f7] - mean_hard).^2(:));
+	fprintf("%d\t%f\t%f\t%f\t%f\n", q_id, f2, f7, d_easy, d_hard);
 end;
 
 % Examples: Manual - 1 and Suggested 0
@@ -163,9 +176,14 @@ for i = [1:m],
 	end;
 end;
 idx = randperm(size(examples, 1))(1:3);	% Randomly select 3 examples
-fprintf("\nQ_Id\tFeature 2\tFeature 7\n");
+fprintf("\nQ_Id\tFeature 2\tFeature 7\td(easy)\t\td(medium)\n");
 for i = [1:3],
-	fprintf("%d\t%f\t%f\n", question_id(examples(idx(i))), X(examples(idx(i)), 1), X(examples(idx(i)), 2));
+	q_id = question_id(examples(idx(i)));
+	f2 = X(examples(idx(i)), 1);
+	f7 = X(examples(idx(i)), 2);
+	d_easy = sum(([f2 f7] - mean_easy).^2(:));
+	d_medium = sum(([f2 f7] - mean_medium).^2(:));
+	fprintf("%d\t%f\t%f\t%f\t%f\n", q_id, f2, f7, d_easy, d_medium);
 end;
 
 % Examples: Manual - 1 and Suggested 2
@@ -179,9 +197,14 @@ for i = [1:m],
 	end;
 end;
 idx = randperm(size(examples, 1))(1:3);	% Randomly select 3 examples
-fprintf("\nQ_Id\tFeature 2\tFeature 7\n");
+fprintf("\nQ_Id\tFeature 2\tFeature 7\td(Medium)\td(hard)\n");
 for i = [1:3],
-	fprintf("%d\t%f\t%f\n", question_id(examples(idx(i))), X(examples(idx(i)), 1), X(examples(idx(i)), 2));
+	q_id = question_id(examples(idx(i)));
+	f2 = X(examples(idx(i)), 1);
+	f7 = X(examples(idx(i)), 2);
+	d_hard = sum(([f2 f7] - mean_hard).^2(:));
+	d_medium = sum(([f2 f7] - mean_medium).^2(:));
+	fprintf("%d\t%f\t%f\t%f\t%f\n", q_id, f2, f7, d_medium, d_hard);
 end;
 
 % Examples: Manual - 2 and Suggested 0
@@ -195,9 +218,14 @@ for i = [1:m],
 	end;
 end;
 idx = randperm(size(examples, 1))(1:3);	% Randomly select 3 examples
-fprintf("\nQ_Id\tFeature 2\tFeature 7\n");
+fprintf("\nQ_Id\tFeature 2\tFeature 7\td(easy)\t\td(hard)\n");
 for i = [1:3],
-	fprintf("%d\t%f\t%f\n", question_id(examples(idx(i))), X(examples(idx(i)), 1), X(examples(idx(i)), 2));
+	q_id = question_id(examples(idx(i)));
+	f2 = X(examples(idx(i)), 1);
+	f7 = X(examples(idx(i)), 2);
+	d_easy = sum(([f2 f7] - mean_easy).^2(:));
+	d_hard = sum(([f2 f7] - mean_hard).^2(:));
+	fprintf("%d\t%f\t%f\t%f\t%f\n", q_id, f2, f7, d_easy, d_hard);
 end;
 
 % Examples: Manual - 2 and Suggested 1
@@ -211,9 +239,403 @@ for i = [1:m],
 	end;
 end;
 idx = randperm(size(examples, 1))(1:3);	% Randomly select 3 examples
-fprintf("\nQ_Id\tFeature 2\tFeature 7\n");
+fprintf("\nQ_Id\tFeature 2\tFeature 7\td(medium)\td(hard)\n");
 for i = [1:3],
-	fprintf("%d\t%f\t%f\n", question_id(examples(idx(i))), X(examples(idx(i)), 1), X(examples(idx(i)), 2));
+	q_id = question_id(examples(idx(i)));
+	f2 = X(examples(idx(i)), 1);
+	f7 = X(examples(idx(i)), 2);
+	d_hard = sum(([f2 f7] - mean_hard).^2(:));
+	d_medium = sum(([f2 f7] - mean_medium).^2(:));
+	fprintf("%d\t%f\t%f\t%f\t%f\n", q_id, f2, f7, d_easy, d_hard);
 end;
 
+
+fprintf("\nk-Means Result Analysis Done.\n");
+
+
+
+% Analyze the Result of Competitive Learning
+fprintf("\n\nAnalyzing Competitive Learning Result...\n");
+
+% Load the Suggested Tags
+fprintf("\nLoading Competitive Learning Output...\n");
+load('CompetitiveLabels');	% In variable comeptitive_labels
+fprintf("Comeptitive Learning Output Loaded.\n");
+
+% Calculate Disagreements with Orignal Tags
+fprintf("\nCalculating Disagreement with Original Tags...\n");
+disagreements = (competitive_labels != y);
+fprintf("Disagreements: %f percent\n", (sum(disagreements(:)) * 100) / m);
+
+% Segregate the Data
+fprintf("\nSegregating data based on labels...\n");
+categories = {};
+for i = [1:3],
+	categories{i} = [];
+end;
+for i = [1:m],
+	categories{competitive_labels(i) + 1} = [categories{competitive_labels(i) + 1}; X(i, :)];
+end;
+easy = categories{1};
+medium = categories{2};
+hard = categories{3};
+fprintf("Data Segragated.\n");
+
+% Calculate Tag Specific Statistics
+fprintf("\nStatistics displayed in format:\nstatistis\tFeature 2\tFeature7\n");
+fprintf("\nCalculating Statistics for Easy Questions...\n");
+stats = statistics(easy);
+fprintf("Min:\t%f\t%f\n", stats(1, 1), stats(1, 2));
+fprintf("Q1:\t%f\t%f\n", stats(2, 1), stats(2, 2));
+fprintf("Median:\t%f\t%f\n", stats(3, 1), stats(3, 2));
+fprintf("Q3:\t%f\t%f\n", stats(4, 1), stats(4, 2));
+fprintf("Max:\t%f\t%f\n", stats(5, 1), stats(5, 2));
+fprintf("Mean:\t%f\t%f\n", stats(6, 1), stats(6, 2));
+fprintf("SD:\t%f\t%f\n", stats(7, 1), stats(7, 2));
+mean_easy = stats(6, :);	% Will be used later
+
+fprintf("\nCalculating Statistics for Medium Questions...\n");
+stats = statistics(medium);
+fprintf("Min:\t%f\t%f\n", stats(1, 1), stats(1, 2));
+fprintf("Q1:\t%f\t%f\n", stats(2, 1), stats(2, 2));
+fprintf("Median:\t%f\t%f\n", stats(3, 1), stats(3, 2));
+fprintf("Q3:\t%f\t%f\n", stats(4, 1), stats(4, 2));
+fprintf("Max:\t%f\t%f\n", stats(5, 1), stats(5, 2));
+fprintf("Mean:\t%f\t%f\n", stats(6, 1), stats(6, 2));
+fprintf("SD:\t%f\t%f\n", stats(7, 1), stats(7, 2));
+mean_medium = stats(6, :);	% Will be used later
+
+fprintf("\nCalculating Statistics for Hard Questions...\n");
+stats = statistics(hard);
+fprintf("Min:\t%f\t%f\n", stats(1, 1), stats(1, 2));
+fprintf("Q1:\t%f\t%f\n", stats(2, 1), stats(2, 2));
+fprintf("Median:\t%f\t%f\n", stats(3, 1), stats(3, 2));
+fprintf("Q3:\t%f\t%f\n", stats(4, 1), stats(4, 2));
+fprintf("Max:\t%f\t%f\n", stats(5, 1), stats(5, 2));
+fprintf("Mean:\t%f\t%f\n", stats(6, 1), stats(6, 2));
+fprintf("SD:\t%f\t%f\n", stats(7, 1), stats(7, 2));
+mean_hard = stats(6, :);	% Will be used later
+
+
+% Examples: Manual - 0 and Suggested 1
+fprintf("\n\nShowing Examples where:\n");
+fprintf("\tManual Tag: Easy\n");
+fprintf("\tSuggested Tag: Medium\n");
+examples = [];
+for i = [1:m],
+	if (y(i) == 0 && competitive_labels(i) == 1)
+		examples = [examples; i];
+	end;
+end;
+idx = randperm(size(examples, 1))(1:3);	% Randomly select 3 examples
+fprintf("\nQ_Id\tFeature 2\tFeature 7\td(easy)\t\td(medium)\n");
+for i = [1:3],
+	q_id = question_id(examples(idx(i)));
+	f2 = X(examples(idx(i)), 1);
+	f7 = X(examples(idx(i)), 2);
+	d_easy = sum(([f2 f7] - mean_easy).^2(:));
+	d_medium = sum(([f2 f7] - mean_medium).^2(:));
+	fprintf("%d\t%f\t%f\t%f\t%f\n", q_id, f2, f7, d_easy, d_medium);
+end;
+
+% Examples: Manual - 0 and Suggested 2
+fprintf("\n\nShowing Examples where:\n");
+fprintf("\tManual Tag: Easy\n");
+fprintf("\tSuggested Tag: Hard\n");
+examples = [];
+for i = [1:m],
+	if (y(i) == 0 && competitive_labels(i) == 2)
+		examples = [examples; i];
+	end;
+end;
+idx = randperm(size(examples, 1))(1:3);	% Randomly select 3 examples
+fprintf("\nQ_Id\tFeature 2\tFeature 7\td(easy)\t\td(hard)\n");
+for i = [1:3],
+	q_id = question_id(examples(idx(i)));
+	f2 = X(examples(idx(i)), 1);
+	f7 = X(examples(idx(i)), 2);
+	d_easy = sum(([f2 f7] - mean_easy).^2(:));
+	d_hard = sum(([f2 f7] - mean_hard).^2(:));
+	fprintf("%d\t%f\t%f\t%f\t%f\n", q_id, f2, f7, d_easy, d_hard);
+end;
+
+% Examples: Manual - 1 and Suggested 0
+fprintf("\n\nShowing Examples where:\n");
+fprintf("\tManual Tag: Medium\n");
+fprintf("\tSuggested Tag: Easy\n");
+examples = [];
+for i = [1:m],
+	if (y(i) == 1 && competitive_labels(i) == 0)
+		examples = [examples; i];
+	end;
+end;
+idx = randperm(size(examples, 1))(1:3);	% Randomly select 3 examples
+fprintf("\nQ_Id\tFeature 2\tFeature 7\td(easy)\t\td(medium)\n");
+for i = [1:3],
+	q_id = question_id(examples(idx(i)));
+	f2 = X(examples(idx(i)), 1);
+	f7 = X(examples(idx(i)), 2);
+	d_easy = sum(([f2 f7] - mean_easy).^2(:));
+	d_medium = sum(([f2 f7] - mean_medium).^2(:));
+	fprintf("%d\t%f\t%f\t%f\t%f\n", q_id, f2, f7, d_easy, d_medium);
+end;
+
+% Examples: Manual - 1 and Suggested 2
+fprintf("\n\nShowing Examples where:\n");
+fprintf("\tManual Tag: Medium\n");
+fprintf("\tSuggested Tag: Hard\n");
+examples = [];
+for i = [1:m],
+	if (y(i) == 1 && competitive_labels(i) == 2)
+		examples = [examples; i];
+	end;
+end;
+idx = randperm(size(examples, 1))(1:3);	% Randomly select 3 examples
+fprintf("\nQ_Id\tFeature 2\tFeature 7\td(Medium)\td(hard)\n");
+for i = [1:3],
+	q_id = question_id(examples(idx(i)));
+	f2 = X(examples(idx(i)), 1);
+	f7 = X(examples(idx(i)), 2);
+	d_hard = sum(([f2 f7] - mean_hard).^2(:));
+	d_medium = sum(([f2 f7] - mean_medium).^2(:));
+	fprintf("%d\t%f\t%f\t%f\t%f\n", q_id, f2, f7, d_medium, d_hard);
+end;
+
+% Examples: Manual - 2 and Suggested 0
+fprintf("\n\nShowing Examples where:\n");
+fprintf("\tManual Tag: Hard\n");
+fprintf("\tSuggested Tag: Easy\n");
+examples = [];
+for i = [1:m],
+	if (y(i) == 2 && competitive_labels(i) == 0)
+		examples = [examples; i];
+	end;
+end;
+idx = randperm(size(examples, 1))(1:3);	% Randomly select 3 examples
+fprintf("\nQ_Id\tFeature 2\tFeature 7\td(easy)\t\td(hard)\n");
+for i = [1:3],
+	q_id = question_id(examples(idx(i)));
+	f2 = X(examples(idx(i)), 1);
+	f7 = X(examples(idx(i)), 2);
+	d_easy = sum(([f2 f7] - mean_easy).^2(:));
+	d_hard = sum(([f2 f7] - mean_hard).^2(:));
+	fprintf("%d\t%f\t%f\t%f\t%f\n", q_id, f2, f7, d_easy, d_hard);
+end;
+
+% Examples: Manual - 2 and Suggested 1
+fprintf("\n\nShowing Examples where:\n");
+fprintf("\tManual Tag: Hard\n");
+fprintf("\tSuggested Tag: Medium\n");
+examples = [];
+for i = [1:m],
+	if (y(i) == 2 && competitive_labels(i) == 1)
+		examples = [examples; i];
+	end;
+end;
+idx = randperm(size(examples, 1))(1:3);	% Randomly select 3 examples
+fprintf("\nQ_Id\tFeature 2\tFeature 7\td(medium)\td(hard)\n");
+for i = [1:3],
+	q_id = question_id(examples(idx(i)));
+	f2 = X(examples(idx(i)), 1);
+	f7 = X(examples(idx(i)), 2);
+	d_hard = sum(([f2 f7] - mean_hard).^2(:));
+	d_medium = sum(([f2 f7] - mean_medium).^2(:));
+	fprintf("%d\t%f\t%f\t%f\t%f\n", q_id, f2, f7, d_easy, d_hard);
+end;
+
+
+fprintf("\nCompetitive Learning Result Analysis Done.\n");
+
+
+
+% Analyze the Result of EM
+fprintf("\n\nAnalyzing EM Result...\n");
+
+% Load the Suggested Tags
+fprintf("\nLoading EM Output...\n");
+load('EMLabels');	% In variable em_labels
+fprintf("EM Output Loaded.\n");
+
+% Calculate Disagreements with Orignal Tags
+fprintf("\nCalculating Disagreement with Original Tags...\n");
+disagreements = (em_labels != y);
+fprintf("Disagreements: %f percent\n", (sum(disagreements(:)) * 100) / m);
+
+% Segregate the Data
+fprintf("\nSegregating data based on labels...\n");
+categories = {};
+for i = [1:3],
+	categories{i} = [];
+end;
+for i = [1:m],
+	categories{em_labels(i) + 1} = [categories{em_labels(i) + 1}; X(i, :)];
+end;
+easy = categories{1};
+medium = categories{2};
+hard = categories{3};
+fprintf("Data Segragated.\n");
+
+% Calculate Tag Specific Statistics
+fprintf("\nStatistics displayed in format:\nstatistis\tFeature 2\tFeature7\n");
+fprintf("\nCalculating Statistics for Easy Questions...\n");
+stats = statistics(easy);
+fprintf("Min:\t%f\t%f\n", stats(1, 1), stats(1, 2));
+fprintf("Q1:\t%f\t%f\n", stats(2, 1), stats(2, 2));
+fprintf("Median:\t%f\t%f\n", stats(3, 1), stats(3, 2));
+fprintf("Q3:\t%f\t%f\n", stats(4, 1), stats(4, 2));
+fprintf("Max:\t%f\t%f\n", stats(5, 1), stats(5, 2));
+fprintf("Mean:\t%f\t%f\n", stats(6, 1), stats(6, 2));
+fprintf("SD:\t%f\t%f\n", stats(7, 1), stats(7, 2));
+mean_easy = stats(6, :);	% Will be used later
+
+fprintf("\nCalculating Statistics for Medium Questions...\n");
+stats = statistics(medium);
+fprintf("Min:\t%f\t%f\n", stats(1, 1), stats(1, 2));
+fprintf("Q1:\t%f\t%f\n", stats(2, 1), stats(2, 2));
+fprintf("Median:\t%f\t%f\n", stats(3, 1), stats(3, 2));
+fprintf("Q3:\t%f\t%f\n", stats(4, 1), stats(4, 2));
+fprintf("Max:\t%f\t%f\n", stats(5, 1), stats(5, 2));
+fprintf("Mean:\t%f\t%f\n", stats(6, 1), stats(6, 2));
+fprintf("SD:\t%f\t%f\n", stats(7, 1), stats(7, 2));
+mean_medium = stats(6, :);	% Will be used later
+
+fprintf("\nCalculating Statistics for Hard Questions...\n");
+stats = statistics(hard);
+fprintf("Min:\t%f\t%f\n", stats(1, 1), stats(1, 2));
+fprintf("Q1:\t%f\t%f\n", stats(2, 1), stats(2, 2));
+fprintf("Median:\t%f\t%f\n", stats(3, 1), stats(3, 2));
+fprintf("Q3:\t%f\t%f\n", stats(4, 1), stats(4, 2));
+fprintf("Max:\t%f\t%f\n", stats(5, 1), stats(5, 2));
+fprintf("Mean:\t%f\t%f\n", stats(6, 1), stats(6, 2));
+fprintf("SD:\t%f\t%f\n", stats(7, 1), stats(7, 2));
+mean_hard = stats(6, :);	% Will be used later
+
+
+% Examples: Manual - 0 and Suggested 1
+fprintf("\n\nShowing Examples where:\n");
+fprintf("\tManual Tag: Easy\n");
+fprintf("\tSuggested Tag: Medium\n");
+examples = [];
+for i = [1:m],
+	if (y(i) == 0 && em_labels(i) == 1)
+		examples = [examples; i];
+	end;
+end;
+idx = randperm(size(examples, 1))(1:3);	% Randomly select 3 examples
+fprintf("\nQ_Id\tFeature 2\tFeature 7\td(easy)\t\td(medium)\n");
+for i = [1:3],
+	q_id = question_id(examples(idx(i)));
+	f2 = X(examples(idx(i)), 1);
+	f7 = X(examples(idx(i)), 2);
+	d_easy = sum(([f2 f7] - mean_easy).^2(:));
+	d_medium = sum(([f2 f7] - mean_medium).^2(:));
+	fprintf("%d\t%f\t%f\t%f\t%f\n", q_id, f2, f7, d_easy, d_medium);
+end;
+
+% Examples: Manual - 0 and Suggested 2
+fprintf("\n\nShowing Examples where:\n");
+fprintf("\tManual Tag: Easy\n");
+fprintf("\tSuggested Tag: Hard\n");
+examples = [];
+for i = [1:m],
+	if (y(i) == 0 && em_labels(i) == 2)
+		examples = [examples; i];
+	end;
+end;
+idx = randperm(size(examples, 1))(1:3);	% Randomly select 3 examples
+fprintf("\nQ_Id\tFeature 2\tFeature 7\td(easy)\t\td(hard)\n");
+for i = [1:3],
+	q_id = question_id(examples(idx(i)));
+	f2 = X(examples(idx(i)), 1);
+	f7 = X(examples(idx(i)), 2);
+	d_easy = sum(([f2 f7] - mean_easy).^2(:));
+	d_hard = sum(([f2 f7] - mean_hard).^2(:));
+	fprintf("%d\t%f\t%f\t%f\t%f\n", q_id, f2, f7, d_easy, d_hard);
+end;
+
+% Examples: Manual - 1 and Suggested 0
+fprintf("\n\nShowing Examples where:\n");
+fprintf("\tManual Tag: Medium\n");
+fprintf("\tSuggested Tag: Easy\n");
+examples = [];
+for i = [1:m],
+	if (y(i) == 1 && em_labels(i) == 0)
+		examples = [examples; i];
+	end;
+end;
+idx = randperm(size(examples, 1))(1:3);	% Randomly select 3 examples
+fprintf("\nQ_Id\tFeature 2\tFeature 7\td(easy)\t\td(medium)\n");
+for i = [1:3],
+	q_id = question_id(examples(idx(i)));
+	f2 = X(examples(idx(i)), 1);
+	f7 = X(examples(idx(i)), 2);
+	d_easy = sum(([f2 f7] - mean_easy).^2(:));
+	d_medium = sum(([f2 f7] - mean_medium).^2(:));
+	fprintf("%d\t%f\t%f\t%f\t%f\n", q_id, f2, f7, d_easy, d_medium);
+end;
+
+% Examples: Manual - 1 and Suggested 2
+fprintf("\n\nShowing Examples where:\n");
+fprintf("\tManual Tag: Medium\n");
+fprintf("\tSuggested Tag: Hard\n");
+examples = [];
+for i = [1:m],
+	if (y(i) == 1 && em_labels(i) == 2)
+		examples = [examples; i];
+	end;
+end;
+idx = randperm(size(examples, 1))(1:3);	% Randomly select 3 examples
+fprintf("\nQ_Id\tFeature 2\tFeature 7\td(Medium)\td(hard)\n");
+for i = [1:3],
+	q_id = question_id(examples(idx(i)));
+	f2 = X(examples(idx(i)), 1);
+	f7 = X(examples(idx(i)), 2);
+	d_hard = sum(([f2 f7] - mean_hard).^2(:));
+	d_medium = sum(([f2 f7] - mean_medium).^2(:));
+	fprintf("%d\t%f\t%f\t%f\t%f\n", q_id, f2, f7, d_medium, d_hard);
+end;
+
+% Examples: Manual - 2 and Suggested 0
+fprintf("\n\nShowing Examples where:\n");
+fprintf("\tManual Tag: Hard\n");
+fprintf("\tSuggested Tag: Easy\n");
+examples = [];
+for i = [1:m],
+	if (y(i) == 2 && em_labels(i) == 0)
+		examples = [examples; i];
+	end;
+end;
+idx = randperm(size(examples, 1))(1:3);	% Randomly select 3 examples
+fprintf("\nQ_Id\tFeature 2\tFeature 7\td(easy)\t\td(hard)\n");
+for i = [1:3],
+	q_id = question_id(examples(idx(i)));
+	f2 = X(examples(idx(i)), 1);
+	f7 = X(examples(idx(i)), 2);
+	d_easy = sum(([f2 f7] - mean_easy).^2(:));
+	d_hard = sum(([f2 f7] - mean_hard).^2(:));
+	fprintf("%d\t%f\t%f\t%f\t%f\n", q_id, f2, f7, d_easy, d_hard);
+end;
+
+% Examples: Manual - 2 and Suggested 1
+fprintf("\n\nShowing Examples where:\n");
+fprintf("\tManual Tag: Hard\n");
+fprintf("\tSuggested Tag: Medium\n");
+examples = [];
+for i = [1:m],
+	if (y(i) == 2 && em_labels(i) == 1)
+		examples = [examples; i];
+	end;
+end;
+idx = randperm(size(examples, 1))(1:3);	% Randomly select 3 examples
+fprintf("\nQ_Id\tFeature 2\tFeature 7\td(medium)\td(hard)\n");
+for i = [1:3],
+	q_id = question_id(examples(idx(i)));
+	f2 = X(examples(idx(i)), 1);
+	f7 = X(examples(idx(i)), 2);
+	d_hard = sum(([f2 f7] - mean_hard).^2(:));
+	d_medium = sum(([f2 f7] - mean_medium).^2(:));
+	fprintf("%d\t%f\t%f\t%f\t%f\n", q_id, f2, f7, d_easy, d_hard);
+end;
+
+fprintf("\nEM Result Analysis Done.\n");
 

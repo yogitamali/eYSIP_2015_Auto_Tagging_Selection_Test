@@ -16,7 +16,7 @@ function [cluster_error, labels] = findClosestCentroids(X, centroids),
 	for i = [1:m],
 		closest_distance = Inf;
 		for k = [1:K],
-			distance = sum(X(i, :) - centroids(k, :)).^2;
+			distance = sum((X(i, :) - centroids(k, :)).^2);
 			if distance < closest_distance,
 				closest_distance = distance;
 				labels(i) = k;
