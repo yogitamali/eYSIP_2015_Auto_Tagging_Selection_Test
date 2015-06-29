@@ -1,0 +1,146 @@
+Note: All Question IDs have been removed from this file. They were part of the actual output.
+
+
+Reading data...
+Data Read.
+
+
+Performing Mean Normalization...
+warning: operator -: automatic broadcasting operation applied
+warning: quotient: automatic broadcasting operation applied
+Mean Normalization Done.
+
+
+Calculating Statistics of Original Data...
+Statistics have been calculated after Mean Normalization.
+
+For Feature 1:
+Minimum: -1.686364
+First Quartile: -0.806187
+Median: -0.177943
+Third Quartile: 0.671203
+Maximum: 2.934084
+Mean: 0.000000
+Standard Deviation: 1.000000
+
+For Feature 2:
+Minimum: -4.498151
+First Quartile: -0.610837
+Median: 0.028481
+Third Quartile: 0.633459
+Maximum: 3.379505
+Mean: -0.000000
+Standard Deviation: 1.000000
+
+For Feature 3:
+Minimum: -1.842775
+First Quartile: -0.717071
+Median: 0.158576
+Third Quartile: 1.159102
+Maximum: 1.159102
+Mean: 0.000000
+Standard Deviation: 1.000000
+Original Data Statistics Calculated.
+
+
+Analyzing k-Means Result...
+
+Loading k-Means Output...
+k-Means Output Loaded.
+
+Calculating Disagreement with Original Tags...
+Disagreements: 56.279382 percent
+
+Segregating data based on labels...
+Data Segragated.
+
+Statistics displayed in format:
+statistis       Feature 2       Feature 8       Feature 7
+
+Calculating Statistics for Easy Questions...
+Min:    -0.515463       -4.498151       -0.341837
+Q1:     0.842288        -1.631410       0.962029
+Median: 1.370263        -1.090920       1.159102
+Q3:     1.817612        -0.622869       1.159102
+Max:    2.934084        1.103829        1.159102
+Mean:   1.318100        -1.134291       1.018021
+SD:     0.664624        0.771805        0.281891
+
+Calculating Statistics for Medium Questions...
+Min:    -1.359338       -1.666909       -0.842249
+Q1:     -0.469860       -0.339586       -0.018534
+Median: -0.105983       0.027681        0.408633
+Q3:     0.372870        0.478746        0.730134
+Max:    1.813161        2.620366        1.159102
+Mean:   -0.031324       0.092868        0.376808
+SD:     0.593810        0.666323        0.510039
+
+Calculating Statistics for Hard Questions...
+Min:    -1.686364       -2.050254       -1.842775
+Q1:     -1.213429       0.158990        -1.842775
+Median: -0.946178       0.589187        -1.092306
+Q3:     -0.604990       1.131865        -0.642024
+Max:    1.106294        3.379505        0.158576
+Mean:   -0.860275       0.662356        -1.138686
+SD:     0.470910        0.780565        0.575336
+
+Showing Examples where:
+        Manual Tag: Easy
+        Suggested Tag: Medium
+
+Q_Id    Feature 2       Feature 8       Feature 7       d(easy)         d(medium)
+[?]     0.867986        0.851740        0.596250        4.324815        1.432801
+[?]     0.029582        -0.091382       1.159102        2.767844        0.649641
+[?]     -0.271237       -0.926205       1.159102        2.589197        1.708051
+
+
+Showing Examples where:
+        Manual Tag: Easy
+        Suggested Tag: Hard
+
+Q_Id    Feature 2       Feature 8       Feature 7       d(easy)         d(hard)
+[?]     -0.894359       1.059520        -1.842775       17.891940       0.654642
+[?]     -0.104093       1.508212        -0.341837       10.854671       1.922251
+[?]     -1.055187       1.778721        -1.842775       22.302284       1.780001
+
+
+Showing Examples where:
+        Manual Tag: Medium
+        Suggested Tag: Easy
+
+Q_Id    Feature 1       Feature 2       Feature 3       d(easy)         d(medium)
+[?]     1.061686        -0.072481       1.159102        1.213093        1.833994
+[?]     0.822980        -0.297314       1.159102        0.965580        1.494061
+[?]     0.657030        -0.931338       1.159102        0.498108        2.134812
+
+
+Showing Examples where:
+        Manual Tag: Medium
+        Suggested Tag: Hard
+
+Q_Id    Feature 2       Feature 8       Feature 7       d(medium)       d(hard)
+[?]     -0.676241       0.694044        -0.205251       1.116124        0.906173
+[?]     -1.263507       1.580854        -1.842775       8.658926        1.501975
+[?]     -1.281161       0.227860        -1.842775       6.506866        0.861673
+
+
+Showing Examples where:
+        Manual Tag: Hard
+        Suggested Tag: Easy
+
+Q_Id    Feature 2       Feature 8       Feature 7       d(easy)         d(hard)
+[?]     1.928884        0.201867        1.159102        2.178281        13.271286
+[?]     1.171540        0.054445        1.159102        1.454478        9.777657
+[?]     1.007877        -0.285070       0.658689        0.946535        7.618167
+
+
+Showing Examples where:
+        Manual Tag: Hard
+        Suggested Tag: Medium
+
+Q_Id    Feature 2       Feature 8       Feature 7       d(medium)       d(hard)
+[?]     -0.280636       0.604335        -0.341837       0.840205        0.974316
+[?]     0.802143        0.106798        0.158576        0.742487        4.755167
+[?]     0.855404        0.458373        0.730134        1.044720        6.477651
+
+k-Means Result Analysis Done.

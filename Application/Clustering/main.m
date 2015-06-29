@@ -19,17 +19,25 @@ y = inputData(:, 9);	% Last column contains current question tag
 % Some useful variables
 m = size(X, 1);	% Number of training examples
 
+% Modify Feature 5 to "Average Marks of People who did not attempt the
+% given question or attempted it incorrectly
+% Comment this section if not needed
+% This is feature 8, semantics are same as feature 5
+X(:, 5) = (X(:, 5) .* X(:, 3) .+ X(:, 6) .* X(:, 1)) ./...
+		 (X(:, 1) .+ X(:, 3));
+
 % Perform mean normalization
 fprintf("\n\nPerforming Mean Normalization...\n");
 meanX = mean(X);	% Mean of all the features
 stdX = std(X);	% Standard deviation of all the features
 X = (X - meanX) ./ stdX;
-X = X(:, [2, 7]);	% Uncomment this line to use selected features
+X = X(:, [2, 5, 7]);	% Uncomment this line to use selected features
 fprintf("Mean Normalization Done.\n");
 
 % Use PCA to obtain XReduced for Plotting Purposes
 fprintf("\n\nRunning PCA...\n");
 XReduce = pca(X, m);
+% XReduce = X;	% Make this line a comment if using more than 2 features
 fprintf("PCA Completed.\n");
 
 % Visualize the initial data
@@ -46,7 +54,7 @@ fprintf("Clustering Completed.\n");
 
 % Assign Semantics
 fprintf("\n\nAssigning Semantics...\n");
-[labels, map] = assignSemanticsNew(centroids, labels);	% Change this to assignSemantics if using all features
+[labels, map] = assignSemanticsNew3(centroids, labels);	% Change this to assignSemantics if using all features
 fprintf("Semantics Assigned.\n");
 
 % Show Manual Tagging Accuracy
