@@ -13,7 +13,7 @@ function theta = linearRegression(X, y, max_iters),
 	n = size(X, 2);
 	
 	% Set up regularization parameter
-	lambda = 0.3;
+	lambda = 1;
 	
 	% Add bias
 	X = [ones(m, 1) X];

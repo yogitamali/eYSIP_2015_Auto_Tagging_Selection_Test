@@ -33,6 +33,5 @@ function predict(trainingX, trainingY, testX, testY, theta),
 	predictedTestY = testX * theta;
 	testError = sum((predictedTestY - testY).^2)...
 					 / (2 * p);
-	fprintf("Test Error: %f\n", testError);	
-
+	fprintf("Test Error: %f\n", testError);
 end;

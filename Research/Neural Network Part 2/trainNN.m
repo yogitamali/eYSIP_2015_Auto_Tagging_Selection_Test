@@ -12,7 +12,7 @@ function [theta1, theta2] = trainNN(X, y, max_iters, num_classes),
 	% Set up useful variables
 	input_layer_size = n;	% All the features as input
 	% hidden_layer_size = floor((n + num_classes) * (2 / 3.0));	% 2/3 times sum of input and output units
-	hidden_layer_size = 30;
+	hidden_layer_size = 35;
 	output_layer_size = num_classes;	% Number of classes in which marks have been divided
 	
 	% Regularization Parameter

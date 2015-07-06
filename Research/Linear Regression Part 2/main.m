@@ -18,7 +18,7 @@ fprintf("\n\n\nReading data...\n");
 inputData = csvread('features.csv');
 student_id = inputData(:, 1);	% First column contains student ids
 X = inputData(:, 2:8);	% Column 2-8 contain features, X is Training Matrix
-% X = X(:, [1, 3, 7]);	% Uncomment this line to use selected features
+% X = X(:, [1, 2, 6, 7]);	% Uncomment this line to use selected features
 y = inputData(:, 9);	% Last column contain student scores which can be used as output
 fprintf("Data Read.\n");
 
@@ -63,9 +63,17 @@ fprintf("Converted to binary features.\n");
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Run PCA for Dimensionality Reduction
+fprintf("\n\nRunning PCA...\n");
+R = pca(trainingX);	% Find Reduction Matrix, Use same matrix to reduce test set
+trainingX = trainingX * R;
+fprintf("PCA Completed.\n");
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % Run Linear Regression
 fprintf("\n\nRunning Linear Regression...\n");
-theta = linearRegression(trainingX, trainingY, 100);
+theta = linearRegression(trainingX, trainingY, 200);
 fprintf("Linear Regression Complete.\n");
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -75,6 +83,13 @@ fprintf("\n\nConverting test examples to binary features...\n");
 fflush(stdout);
 testX = toBinary(testX, featureMapping);
 fprintf("Converted to binary features.\n");
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Reduce the Test Matrix
+fprintf("\n\nReducing the Test Matrix...\n");
+testX = testX * R;
+fprintf("Test Matrix Reduced.\n");
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

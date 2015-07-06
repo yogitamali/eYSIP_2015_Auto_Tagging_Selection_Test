@@ -18,18 +18,11 @@ fprintf("\n\n\nReading data...\n");
 inputData = csvread('features.csv');
 student_id = inputData(:, 1);	% First column contains student ids
 X = inputData(:, 2:8);	% Column 2-8 contain features, X is Training Matrix
-% X = X(:, [1, 2, 6, 7]);	% Uncomment this line to use selected features
+% X = X(:, [1, 2, 7]);	% Uncomment this line to use selected features
 y = inputData(:, 9);	% Last column contain student scores which can be used as output
 fprintf("Data Read.\n");
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Assign class to each output based on marks obtained. Eg. 30 - 34 go to class 6
-fprintf("\n\nAssigning Class to Students Based on Marks...\n");
-class_interval = 5;	% Adjust this to change precision of output
-y = 1 .+ floor((y .- min(y)) / class_interval);
-num_classes = max(y);
-fprintf("Classes Assigned");
+y = (y .- mean(y)) / std(y);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -82,7 +75,7 @@ fprintf("PCA Completed.\n");
 
 % Run Linear Regression
 fprintf("\n\nTraining Neural Network...\n");
-[theta1, theta2] = trainNN(trainingX, trainingY, 100, num_classes);
+[theta1, theta2, theta3] = trainNN(trainingX, trainingY, 300);
 fprintf("Training Complete.\n");
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -105,6 +98,6 @@ fprintf("Test Matrix Reduced.\n");
 % Estimate the error on test set
 fprintf("\n\nEstimating Errors...\n");
 fflush(stdout);
-output = predict(testX, testY, theta1, theta2);
+output = predict(testX, testY, theta1, theta2, theta3);
 fprintf("Errors Estimated.\n\n\n");
 
