@@ -1,0 +1,77 @@
+
+
+
+
+Reading test data...
+Number of test examples: 315
+Test data read.
+
+
+Analysing Naive Bayes Output...
+
+Loading Output...
+Output Loaded.
+
+Calculating Accuracy...
+Accuracy (exact): 13.333333
+Accuracy (+- 1 Class label): 36.190476
+Accuracy (+- 2 Class label): 53.650794
+
+Naive Bayes Analyzed.
+
+
+Analysing Neural Network (1 Hidden Layer) Output...
+
+Loading Output...
+Output Loaded.
+
+Calculating Accuracy...
+Accuracy (exact): 15.555556
+Accuracy (+- 1 Class label): 43.174603
+Accuracy (+- 2 Class label): 66.349206
+
+Neural Network (1 Hidden Layer) Analyzed.
+
+
+Analysing Neural Network (2 Hidden Layers) Output...
+
+Loading Output...
+Output Loaded.
+
+Calculating Accuracy...
+Accuracy (exact): 16.507937
+Accuracy (+- 1 Class label): 44.444444
+Accuracy (+- 2 Class label): 68.571429
+
+Neural Network (2 Hidden Layers) Analyzed.
+
+
+Comparing Naive Bayes and Neural Network (1 Hidden Layer)...
+
+Calculating Agreement...
+Agreement (exact): 46.984127
+Agreement (+- 1 Class label): 68.571429
+Agreement (+- 2 Class label): 76.825397
+
+Comparison Complete.
+
+
+Comparing Naive Bayes and Neural Network (2 Hidden Layers)...
+
+Calculating Agreement...
+Agreement (exact): 30.476190
+Agreement (+- 1 Class label): 68.571429
+Agreement (+- 2 Class label): 80.317460
+
+Comparison Complete.
+
+
+Comparing Neural Networks...
+
+Calculating Agreement...
+Agreement (exact): 50.158730
+Agreement (+- 1 Class label): 68.571429
+Agreement (+- 2 Class label): 99.047619
+
+Comparison Complete.
+
