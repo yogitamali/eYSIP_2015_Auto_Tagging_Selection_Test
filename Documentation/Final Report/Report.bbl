@@ -1,0 +1,67 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.4 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist{nty}{nty}
+    \entry{octave}{misc}{}
+      \name{labelname}{1}{}{%
+        {{hash=b7e89d55aa08a289aa48277386e6ff1d}{GNU}{G\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=b7e89d55aa08a289aa48277386e6ff1d}{GNU}{G\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{b7e89d55aa08a289aa48277386e6ff1d}
+      \strng{fullhash}{b7e89d55aa08a289aa48277386e6ff1d}
+      \field{sortinit}{G}
+      \field{sortinithash}{480ee01f9ffd559b3258d822f54a8ac2}
+      \field{labeltitle}{Octave}
+      \field{title}{Octave}
+      \verb{url}
+      \verb http://www.gnu.org/software/octave/
+      \endverb
+    \endentry
+    \entry{libsvm}{misc}{}
+      \field{sortinit}{l}
+      \field{sortinithash}{c41a2b5886eeae464e75d1a9df4cd13e}
+      \field{labeltitle}{libsvm}
+      \field{title}{libsvm}
+      \verb{url}
+      \verb http://www.csie.ntu.edu.tw/~cjlin/libsvm/
+      \endverb
+    \endentry
+    \entry{sergios}{book}{}
+      \name{labelname}{2}{}{%
+        {{hash=fd3acabdbe6cc1c8fdbab64dd76ae135}{Theodoridis}{T\bibinitperiod}{Sergios}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=d9a434e0a63c39a6601c8aeab62f6546}{Koutroumbas}{K\bibinitperiod}{Konstantinos}{K\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=fd3acabdbe6cc1c8fdbab64dd76ae135}{Theodoridis}{T\bibinitperiod}{Sergios}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=d9a434e0a63c39a6601c8aeab62f6546}{Koutroumbas}{K\bibinitperiod}{Konstantinos}{K\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{b40a7473f01d514e418f2ac074992870}
+      \strng{fullhash}{b40a7473f01d514e418f2ac074992870}
+      \field{sortinit}{T}
+      \field{sortinithash}{9378dd666f3c24d81538df53aa99e23d}
+      \field{labeltitle}{Pattern Recognition}
+      \field{title}{Pattern Recognition}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+
