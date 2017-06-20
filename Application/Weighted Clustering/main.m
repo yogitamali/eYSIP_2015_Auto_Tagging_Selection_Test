@@ -56,6 +56,11 @@ fprintf("\n\nManual Tagging Accuracy = %f percent\n", accuracy);
 % Visualize Final Data
 fprintf("\n\nVisualizing final data...\n");
 plotData(XReduce, labels .+ 1, m);
-fprintf("Visualization done. Press any key to continue.\n\n\n");
-pause;
+fprintf("Visualization done.");
 
+% Save the new labels
+fprintf("\n\nSaving the new labels...\n");
+ques_id_to_labels = [question_id, labels];
+csvwrite('output_labels.csv', ques_id_to_labels);
+fprintf("Done Saving. Press any key to continue.\n\n\n");
+pause;
