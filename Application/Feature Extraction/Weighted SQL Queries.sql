@@ -71,8 +71,8 @@ drop table WeightedFeature2;
 
 -- Now Export the data to CSV file
 select *
-from NewFeatures natural join (select id as question_id, difficulty_level from question_master) as T
-into outfile '/tmp/weightedfeatures.csv'
+from WeightedFeatures natural join (select id as question_id, difficulty_level from question_master) as T
+into outfile '/var/lib/mysql-files/weightedfeatures.csv'
 fields terminated by ','
 enclosed by ''
 lines terminated by '\r\n';
